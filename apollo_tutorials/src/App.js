@@ -1,33 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import {
-  useQuery,
-  gql
-} from "@apollo/client";
+import {Dogs, DogPhoto} from './Dogs';
+import {ExchangeRates} from './ExchangeRates';
 
-
-const EXCHANGE_RATES = gql`
-query GetExchangeRates {
-  rates(currency: "USD") {
-    currency
-    rate
-  }
-}
-`;
-
-function ExchangeRates() {
-const { loading, error, data } = useQuery(EXCHANGE_RATES);
-
-if (loading) return <p>Loading...</p>;
-if (error) return <p>Error :(</p>;
-
-return data.rates.map(({ currency, rate }) => (
-  <div key={currency}>
-    <p>
-      {currency}: {rate}
-    </p>
-  </div>
-));
+function onDogSelected() {
+  console.log("A dog was selected")
 }
 
 function App(props) {
@@ -38,8 +15,10 @@ function App(props) {
         <p>
           Apollo Tutorial for Mesh
         </p>
-        <ExchangeRates />
+        <Dogs onDogSelected={onDogSelected}/>
+        <DogPhoto/>
       </header>
+      <ExchangeRates />
     </div>
   );
 }
