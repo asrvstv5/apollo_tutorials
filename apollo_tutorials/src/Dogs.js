@@ -50,6 +50,6 @@ export function DogPhoto({ breed }) {
   if (error) return `Error! ${error}`;
 
   return (
-    <img alt="" src={data.dog.displayImage} style={{ height: 100, width: 100 }} />
+    <img alt="" src={data.dog.displayImage} style={{ height: 500, width: 500 }} />
   );
 }
