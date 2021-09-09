@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import React from 'react';
 
 const GET_DOGS = gql`
   query GetDogs {
@@ -18,8 +19,12 @@ query Dog($breed: String!) {
 }
 `;
 
+function change(event) {
+    console.log(event.target.value)
+}
 
-export function Dogs({ onDogSelected }) {
+export function Dogs(props) {
+    const { onDogSelected } = props;
     const { loading, error, data } = useQuery(GET_DOGS);
   
     if (loading) return 'Loading...';
@@ -34,7 +39,7 @@ export function Dogs({ onDogSelected }) {
         ))}
       </select>
     );
-  }
+}
 
 export function DogPhoto({ breed }) {
   const { loading, error, data } = useQuery(GET_DOG_PHOTO, {

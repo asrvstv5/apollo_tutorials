@@ -8,9 +8,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+/*
 const client = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  cache: new InMemoryCache()
+});
+*/
+const client = new ApolloClient({
+  uri: 'https://71z1g.sse.codesandbox.io/',
   cache: new InMemoryCache()
 });
 
