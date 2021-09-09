@@ -10,13 +10,16 @@ class App extends React.Component {
     this.state = {
        dogName: "bulldog",
     }
-    this.onDogSelected = this.onDogSelected(this);
+    
   }
+  componentWillMount() {
+    this.onDogSelected = this.onDogSelected.bind(this);
+}
 
   onDogSelected = (event) => {
-    console.log("A dog was selected = ", event);
+    console.log("A dog was selected = ", event.target.value);
     this.setState({
-      dogName: event.value,
+      dogName: event.target.value,
     })
   }
 
